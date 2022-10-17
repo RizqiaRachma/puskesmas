@@ -31,7 +31,7 @@
 	                        <table class="display" id="responsive">
 	                            <thead>
 	                                <tr>
-	                                    <th>ROLE</th>
+	                                    <th>NAME</th>
 										<th>AKSI</th>
 	                                </tr>
 	                            </thead>
