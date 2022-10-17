@@ -27,13 +27,12 @@
                         </ul>
                     </li>
                     <li class="dropdown">
-                        <a class="nav-link menu-title {{ prefixActive('/users') }}" href="javascript:void(0)"><i data-feather="users"></i><span>Users</span></a>
-                        <ul class="nav-submenu menu-content" style="display: {{ prefixBlock('/users') }};">
-                            <li><a href="{{ ('input-data') }}" class="{{routeActive('input-data')}}">Input User</a></li>
-                            <li><a href="{{ ('user-data') }}" class="{{routeActive('user-data')}}">Users Data</a></li>
-                            <li><a href="{{ route('user-profile') }}" class="{{routeActive('user-profile')}}">Users Profile</a></li>
-                            <li><a href="{{ route('edit-profile') }}" class="{{routeActive('edit-profile')}}">Users Edit</a></li>
-                            <li><a href="{{ route('user-cards') }}" class="{{routeActive('user-cards')}}">Users Cards</a></li>
+                        <a class="nav-link menu-title {{ prefixActive('/user') }}" href="javascript:void(0)"><i data-feather="user"></i><span>Users</span></a>
+                        <ul class="nav-submenu menu-content" style="display: {{ prefixBlock('/user') }};">
+                            <li><a href="{{ route('user.index') }}" class="{{routeActive('user.index')}}">Users Data</a></li>
+                            <li><a href="{{route('permission.index')}}" class="{{routeActive('permission.index')}}">Permission</a></li>
+                            <li><a href="{{route('role.index')}}" class="{{routeActive('role.index')}}">Role</a></li>
+                            
                         </ul>
                     </li>
                     <li class="dropdown">

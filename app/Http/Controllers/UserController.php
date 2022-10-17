@@ -12,17 +12,20 @@ use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
-    public function index(){
-        $data = User::where('id','<>',4)->get();
+    public function index()
+    {
+        $data = User::where('id', '<>', 4)->get();
         return view('admin.user.index', ['data' => $data]);
     }
 
-    public function create(){
+    public function create()
+    {
         $roles = Role::all();
-        return view('admin.user.create', ['roles' => $roles]);  
+        return view('admin.user.create', ['roles' => $roles]);
     }
 
-    public function store(Request $request){
+    public function store(Request $request)
+    {
 
         // dd($request);
         $validated = $request->validate([
@@ -36,16 +39,17 @@ class UserController extends Controller
             'emergency' => 'required',
         ]);
 
-        $save = NEW User;
+        $save = new User;
         $save->name = $request->name;
         $save->email = $request->email;
         $save->password = Hash::make($request->password);
         $save->save();
-        
-        if($save){
+
+        if ($save) {
             $user = User::find($save->id);
-            // dd($user);
-            $saveprofile = NEW Profile();
+            dd($user);
+
+            $saveprofile = new Profile();
             $saveprofile->name = $request->name;
             $saveprofile->address = $request->address;
             $saveprofile->kelurahan = $request->kelurahan;
@@ -57,30 +61,31 @@ class UserController extends Controller
             $saveprofile->birthday = $request->birthday;
             $user->profile()->save($saveprofile);
 
-            if($request->hasFile('avatar') && $request->file('avatar')->isValid()){
+            if ($request->hasFile('avatar') && $request->file('avatar')->isValid()) {
                 $save->addMediaFromRequest('avatar')->toMediaCollection('avatar');
             }
 
             $save->assignRole($request->role);
-
         }
 
         return redirect()->route('users.index')->with('success', 'User created successfully.');
-
     }
 
-    public function edit($id){
+    public function edit($id)
+    {
         $roles = Role::all();
         $data = User::with('profile')->findOrFail($id);
         return view('admin.user.edit', ['data' => $data, 'roles' => $roles]);
     }
 
-    public function editprofile(){
+    public function editprofile()
+    {
         // dd(Auth::user()->profile->pluck('address'));
         return view('admin.user.editprofile');
     }
 
-    public function update(Request $request, $id){
+    public function update(Request $request, $id)
+    {
         $validated = $request->validate([
             'name' => 'required|max:50',
             'address' => 'required',
@@ -98,13 +103,13 @@ class UserController extends Controller
             'name' => $request->name,
         ]);
 
-        if ($request->changepassword === '1'){
+        if ($request->changepassword === '1') {
             $save->update([
                 'password' => Hash::make($request->password),
             ]);
         }
 
-        if ($request->changeemail === '1'){
+        if ($request->changeemail === '1') {
             $validatedemail = $request->validate([
                 'email' => 'required|unique:users',
             ]);
@@ -113,9 +118,9 @@ class UserController extends Controller
             ]);
         }
 
-        if ($save->profile === null){
+        if ($save->profile === null) {
             $user = User::find($save->id);
-            $saveprofile = NEW Profile;
+            $saveprofile = new Profile;
             $saveprofile->name = $request->name;
             $saveprofile->address = $request->address;
             $saveprofile->kelurahan = $request->kelurahan;
@@ -126,7 +131,7 @@ class UserController extends Controller
             $saveprofile->place = $request->place;
             $saveprofile->birthday = $request->birthday;
             $user->profile()->save($saveprofile);
-        }else{
+        } else {
             $save->profile->update([
                 'name' => $request->name,
                 'address' => $request->address,
@@ -147,32 +152,35 @@ class UserController extends Controller
         return redirect()->route('users.index')->with('success', 'User updated successfully.');
     }
 
-    public function changeavatar(Request $request, $id){
+    public function changeavatar(Request $request, $id)
+    {
 
         // dd($request->hasFile('avatar'));
         $data = User::findOrFail($id);
         $data->save();
-        if($request->hasfile('avatar')){
+        if ($request->hasfile('avatar')) {
             $data->clearMediaCollectionExcept('avatar', $data->getFirstMedia());
             $data->addMediaFromRequest('avatar')->toMediaCollection('avatar');
-        } 
+        }
         return redirect()->route('users.editprofile', $id)->with('success', 'Avatar updated successfully.');
     }
 
-    public function changeemail(Request $request, $id){
+    public function changeemail(Request $request, $id)
+    {
         $validated = $request->validate([
             'email' => 'required|email|unique:users,email',
         ]);
-        
+
         $save = User::findOrFail($id);
         $save->update([
             'email' => $request->email,
         ]);
-        
+
         return redirect()->route('users.editprofile', $id)->with('success', 'Email updated successfully.');
     }
 
-    public function changepassword(Request $request, $id){
+    public function changepassword(Request $request, $id)
+    {
         $validated = $request->validate([
             'password' => 'required|min:8',
         ]);
@@ -184,7 +192,8 @@ class UserController extends Controller
         return redirect()->route('users.editprofile', $id)->with('success', 'Password change successfully.');
     }
 
-    public function updateprofile(Request $request, $id){
+    public function updateprofile(Request $request, $id)
+    {
         $validated = $request->validate([
             'name' => 'required',
             'kelurahan' => 'required',
@@ -211,7 +220,8 @@ class UserController extends Controller
         return redirect()->route('users.index')->with('success', 'User Profile updated successfully.');
     }
 
-    public function destroy($id){
+    public function destroy($id)
+    {
         // dd($id);
         $data = User::with('profile')->with('roles')->findOrFail($id);
         $data->delete();
@@ -221,9 +231,9 @@ class UserController extends Controller
 
         DB::table('model_has_roles')->where('model_id', $data->id);
 
-        if ($data){
+        if ($data) {
             return response()->json(['success' => true, 'message' => 'Users deteled success'], 200);
-        }else{
+        } else {
             $message = "Users deleted failed!";
         }
         return response()->json([
@@ -231,7 +241,8 @@ class UserController extends Controller
         ]);
     }
 
-    public function deletednot(){
+    public function deletednot()
+    {
         return redirect()->route('users.index')->with('success', 'User deleted successfully.');
     }
 }

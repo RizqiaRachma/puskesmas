@@ -1,10 +1,38 @@
 <?php
 
+use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\RolesController;
 use Illuminate\Support\Facades\Route;
+
 
 Route::prefix('admin')->group(function () {
 });
+
+Route::prefix('permissions')->group(function () {
+	Route::get('/', [PermissionController::class, 'index'])->name('permission.index');
+	Route::get('/create', [PermissionController::class, 'create'])->name('permission.create');
+	Route::post('/store', [PermissionController::class, 'store'])->name('permission.store');
+	Route::get('/edit/{id}', [PermissionController::class, 'edit'])->name('permission.edit');
+	Route::put('/update/{id}', [PermissionController::class, 'update'])->name('permission.update');
+});
+
+Route::prefix('roles')->group(function () {
+	Route::get('/', [RolesController::class, 'index'])->name('role.index');
+	Route::get('/create', [RolesController::class, 'create'])->name('role.create');
+	Route::post('/store', [RolesController::class, 'store'])->name('role.store');
+	Route::get('/edit/{id}', [RolesController::class, 'edit'])->name('role.edit');
+	Route::put('/update/{id}', [RolesController::class, 'update'])->name('role.update');
+});
+
+Route::prefix('users')->group(function () {
+	Route::get('/', [UserController::class, 'index'])->name('user.index');
+	Route::get('/create', [UserController::class, 'create'])->name('user.create');
+	Route::post('/store', [UserController::class, 'store'])->name('user.store');
+	Route::get('/edit/{id}', [UserController::class, 'edit'])->name('user.edit');
+	Route::put('/update/{id}', [UserController::class, 'update'])->name('user.update');
+});
+
 
 Route::prefix('dashboard')->group(function () {
 	Route::view('dashboard-02', 'admin.dashboard.dashboard-02')->name('dashboard-02');
@@ -198,17 +226,6 @@ Route::prefix('chat')->group(function () {
 	Route::view('chat-video', 'admin.apps.chat-video')->name('chat-video');
 });
 
-Route::prefix('users')->group(function () {
-	Route::view('user-profile', 'admin.apps.user-profile')->name('user-profile');
-	Route::view('edit-profile', 'admin.apps.edit-profile')->name('edit-profile');
-	Route::view('user-cards', 'admin.apps.user-cards')->name('user-cards');
-	Route::view('user-data', 'admin.apps.user-data')->name('user-data');
-});
-//route user data puskesmas
-Route::resource('/user-data', \App\Http\Controllers\UserController::class);
-Route::get('user-data/hapus/{id}', [UserController::class, 'hapus']); //route untuk menghapus data di database
-Route::get('input-data', [UserController::class, 'input']);
-Route::post('input-proses', [UserController::class, 'input_proses'])->name('save');
 
 Route::view('bookmark', 'admin.apps.bookmark')->name('bookmark');
 Route::view('contacts', 'admin.apps.contacts')->name('contacts');

@@ -97,14 +97,14 @@ function printContact(index){
 }
 
 // delete
-function deleteContact(index){
+function deletePermission(index){
 	swal({
-            title: "Are you sure?",
-            text: "This contact will be deleted from your Personal Contacts and from the chat list too.",
+            title: "Anda yakin akan menghapus data ini ?",
+            text: "Data ini akan dihapus dari database.",
             icon: "warning",
             buttons: true,
             dangerMode: true,
-        })
+        }) 
         .then((willDelete) => {
             if (willDelete) {
                 $('.contact-tab-'+index).hide();

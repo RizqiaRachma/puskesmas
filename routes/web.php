@@ -41,9 +41,6 @@ Route::view('modern-layout', 'multiple.modern-layout')->name('modern-layout');
 
 Auth::routes();
 
-Route::prefix('home')->group(function () {
+Route::prefix('admin')->group(function () {
     Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
 });
-
-//route resource
-Route::resource('/posts', \App\Http\Controllers\PostController::class);
