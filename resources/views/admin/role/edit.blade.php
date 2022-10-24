@@ -15,7 +15,7 @@
 		<li class="breadcrumb-item">User</li>
 		<li class="breadcrumb-item active">Edit Roles</li>
 	@endcomponent
-
+  @csrf
     <div class="form-builder">
         <div class="container-fluid">
           <div class="row">
@@ -28,26 +28,19 @@
                       <div class="col-lg-6 col-xl-6">
                         <div class="tab-content" id="pills-tabContent">
                           <div class="tab-pane fade show active" id="pills-input" role="tabpanel" aria-labelledby="pills-input-tab">
-                            <form method="POST" action="{{ route('user.store') }}"  class="theme-form">
+                            <form method="POST" action="{{url('roles/update')}}/{{$data->id}}"  class="theme-form">
                               @csrf
+                              @method('PUT')
                               <div class="mb-3 draggable">
                                 <label for="input-text-1">Role</label>
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name', $data->name) }}" required autocomplete="name" autofocus>
                               </div>
                               <div class="col-sm-12">
-                                <label for="input-text-1">Permission</label>
-                                <div class="form-group m-t-15 m-checkbox-inline mb-0">
-                                  <div class="checkbox checkbox-dark">
-                                    <input id="inline-1" type="checkbox">
-                                    <label for="inline-1">Akses Semua</span></label>
-                                  </div>
-                                  <div class="checkbox checkbox-dark">
-                                    <input id="inline-2" type="checkbox">
-                                    <label for="inline-2">Tambah Post</span></label>
-                                  </div>
-                                  <div class="checkbox checkbox-dark">
-                                    <input id="inline-3" type="checkbox">
-                                    <label for="inline-3">Edit Post</span></label>
+                                @foreach ($permissions as $u)
+                                    <input id="{{ $u->id }}" type="checkbox" name="permission[]" value="{{ $u->id }}" {{ $data->permissions->find($u->id) ? 'checked' : '' }}>
+                                    
+                                    <label for="{{ $u->id }}">{{ $u->name }}</span></label>
+                                     @endforeach
                                   </div>
                                 </div>
                               </div>

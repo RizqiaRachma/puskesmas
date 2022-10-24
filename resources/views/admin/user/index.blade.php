@@ -41,7 +41,7 @@
 	                                <tr>
 	                                    <td>{{ $u->name }}</td>
 	                                    <td>{{ $u->email }}</td>
-	                                    <td><a href="{{url('user/edit')}}/{{$u->id}}" class="btn btn-warning" >Edit</a> | <a href="#"  onclick="deleteContact()" class="btn btn-danger" >Delete</a></td>
+	                                    <td><a href="{{url('users/edit')}}/{{$u->id}}" class="btn btn-warning" >Edit</a> | <a href="{{url('users/delete')}}/{{$u->id}}"  onclick="deleteContact()" class="btn btn-danger" >Delete</a></td>
 									</tr>
 									@endforeach
 									 

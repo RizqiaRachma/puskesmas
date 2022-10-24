@@ -40,7 +40,7 @@
                                 <div class="form-group m-t-15 m-checkbox-inline mb-0">
                                   <div class="checkbox checkbox-dark">
                                     @foreach ($permissions as $u)
-                                    <input id="{{ $u->id }}" type="checkbox" name="permission" value="{{ $u->id }}">
+                                    <input id="{{ $u->id }}" type="checkbox" name="permission[]" value="{{ $u->id }}">
                                     <label for="{{ $u->id }}">{{ $u->name }}</span></label>
                                      @endforeach
                                   </div>

@@ -32,7 +32,6 @@
 	                            <thead>
 	                                <tr>
 	                                    <th>NAME</th>
-										<th>GUARD NAME</th>
 										<th>#</th>
 	                                </tr>
 	                            </thead>
@@ -40,7 +39,6 @@
                                     @foreach ($data as $u)
 	                                <tr>
 	                                    <td>{{ $u->name }}</td>
-										<td>{{ $u->guard_name }}</td>
 	                                    <td><a href="{{url('permissions/edit')}}/{{$u->id}}" class="btn btn-warning" >Edit</a> | <a href="javascript:void()" onclick="deletePermission()" class="btn btn-danger" >Delete</a></td>
 									</tr>
 									@endforeach
@@ -51,7 +49,6 @@
 	                            <tfoot>
 	                                <tr>
 										<th>NAME</th>
-										<th>GUARD NAME</th>
 										<th>#</th>
 	                                </tr>
 	                            </tfoot>

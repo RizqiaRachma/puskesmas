@@ -42,7 +42,7 @@
 	                                <tr>
 	                                    <td><?php echo e($u->name); ?></td>
 	                                    <td><?php echo e($u->email); ?></td>
-	                                    <td><a href="<?php echo e(url('user/edit')); ?>/<?php echo e($u->id); ?>" class="btn btn-warning" >Edit</a> | <a href="#"  onclick="deleteContact()" class="btn btn-danger" >Delete</a></td>
+	                                    <td><a href="<?php echo e(url('users/edit')); ?>/<?php echo e($u->id); ?>" class="btn btn-warning" >Edit</a> | <a href="<?php echo e(url('users/delete')); ?>/<?php echo e($u->id); ?>"  onclick="deleteContact()" class="btn btn-danger" >Delete</a></td>
 									</tr>
 									<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 									 

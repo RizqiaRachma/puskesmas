@@ -29,13 +29,13 @@ class UserController extends Controller
 
         // dd($request);
         $validated = $request->validate([
-            'name' => 'required|unique:users|max:50',
-            'email' => 'required|unique:users',
-            'password' => 'required',
-            'address' => 'required',
+            'name'      => 'required|unique:users|max:50',
+            'email'     => 'required|unique:users',
+            'password'  => 'required',
+            'address'   => 'required',
             'kelurahan' => 'required',
             'kecamatan' => 'required',
-            'kotakab' => 'required',
+            'kotakab'   => 'required',
             'emergency' => 'required',
         ]);
 

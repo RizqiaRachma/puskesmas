@@ -1,7 +1,7 @@
 @extends('admin.authentication.master')
 
 @section('title')login
- {{ $title }}
+
 @endsection
 
 @push('css')
@@ -52,17 +52,11 @@
                                 <div class="show-hide"><span class="show"> </span></div>
                             </div>
                         </div>
-                        <div class="form-group"> 
-                            <div class="checkbox">
-                                <input id="checkbox1" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-                                <label for="checkbox1">Remember password</label>
-                            </div>
-                            <a class="link" href="{{ route('forget-password') }}">Forgot password?</a>
-                        </div>
+                        
                         <div class="form-group">
                             <button class="btn btn-primary btn-block" type="submit">Sign in</button>
                         </div>
-                        <p>Don't have account?<a class="ms-2" href="{{ route('register') }}">Create Account</a></p>
+                        
                     </form>
                 </div>
             </div>

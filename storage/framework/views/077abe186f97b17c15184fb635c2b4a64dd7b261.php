@@ -40,7 +40,7 @@
                                     <?php $__currentLoopData = $data; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $u): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 	                                <tr>
 	                                    <td><?php echo e($u->name); ?></td>
-	                                    <td><a href="<?php echo e(url('role/edit')); ?>/<?php echo e($u->id); ?>" class="btn btn-warning" >Edit</a> | <a href="#" class="btn btn-danger" >Delete</a></td>
+	                                    <td><a href="<?php echo e(url('roles/edit')); ?>/<?php echo e($u->id); ?>" class="btn btn-warning" >Edit</a> | <a href="#" class="btn btn-danger" >Delete</a></td>
 									</tr>
 									<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 									

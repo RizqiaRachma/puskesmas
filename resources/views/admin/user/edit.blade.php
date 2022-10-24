@@ -28,12 +28,12 @@
                       <div class="col-lg-6 col-xl-6">
                         <div class="tab-content" id="pills-tabContent">
                           <div class="tab-pane fade show active" id="pills-input" role="tabpanel" aria-labelledby="pills-input-tab">
-                            <form method="POST" action="{{url('user/edit-proses')}}/{{$user->id}}"  class="theme-form">
+                            <form method="POST" action="{{url('users/edit-proses')}}/{{$data->id}}"  class="theme-form">
                                 @csrf
                                 @method('PUT')
                               <div class="mb-3 draggable">
                                 <label for="input-text-1">NAMA</label>
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name', $user->name) }}" required autocomplete="name" autofocus>
+                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name', $data->name) }}" required autocomplete="name" autofocus>
 
 										@error('name')
 											<span class="invalid-feedback" role="alert">
@@ -43,7 +43,7 @@
                               </div>
                               <div class="mb-3 draggable">
                                 <label for="input-text-1">EMAIL</label>
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email', $user->email) }}" required autocomplete="email">
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email', $data->email) }}" required autocomplete="email">
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">

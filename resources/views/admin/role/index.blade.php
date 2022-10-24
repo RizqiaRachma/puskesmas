@@ -39,7 +39,7 @@
                                     @foreach ($data as $u)
 	                                <tr>
 	                                    <td>{{ $u->name }}</td>
-	                                    <td><a href="{{url('role/edit')}}/{{$u->id}}" class="btn btn-warning" >Edit</a> | <a href="#" class="btn btn-danger" >Delete</a></td>
+	                                    <td><a href="{{url('roles/edit')}}/{{$u->id}}" class="btn btn-warning" >Edit</a> | <a href="#" class="btn btn-danger" >Delete</a></td>
 									</tr>
 									@endforeach
 									

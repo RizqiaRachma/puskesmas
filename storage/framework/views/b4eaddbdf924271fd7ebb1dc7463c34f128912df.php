@@ -33,7 +33,6 @@
 	                            <thead>
 	                                <tr>
 	                                    <th>NAME</th>
-										<th>GUARD NAME</th>
 										<th>#</th>
 	                                </tr>
 	                            </thead>
@@ -41,7 +40,6 @@
                                     <?php $__currentLoopData = $data; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $u): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 	                                <tr>
 	                                    <td><?php echo e($u->name); ?></td>
-										<td><?php echo e($u->guard_name); ?></td>
 	                                    <td><a href="<?php echo e(url('permissions/edit')); ?>/<?php echo e($u->id); ?>" class="btn btn-warning" >Edit</a> | <a href="javascript:void()" onclick="deletePermission()" class="btn btn-danger" >Delete</a></td>
 									</tr>
 									<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -52,7 +50,6 @@
 	                            <tfoot>
 	                                <tr>
 										<th>NAME</th>
-										<th>GUARD NAME</th>
 										<th>#</th>
 	                                </tr>
 	                            </tfoot>
