@@ -3,6 +3,7 @@
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RolesController;
+use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -33,6 +34,11 @@ Route::prefix('users')->group(function () {
 	Route::put('/update/{id}', [UserController::class, 'update'])->name('user.update');
 	Route::get('/edit-profile', [UserController::class, 'editprofile'])->name('user.edit-profile');
 	Route::put('/edit-email', [UserController::class, 'changeemail'])->name('user.edit-email');
+});
+
+Route::prefix('page')->group(function () {
+	Route::get('/', [PageController::class, 'index'])->name('page.index');
+	Route::get('/create', [PageController::class, 'create'])->name('page.create');
 });
 
 

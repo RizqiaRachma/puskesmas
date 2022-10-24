@@ -1,20 +1,21 @@
-@extends('layouts.admin.master')
 
-@section('title') Page
- {{ $title }}
-@endsection
 
-@push('css')
-@endpush
+<?php $__env->startSection('title'); ?> Page
+ <?php echo e($title); ?>
 
-@section('content')
-	@component('components.breadcrumb')
-		@slot('breadcrumb_title')
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startPush('css'); ?>
+<?php $__env->stopPush(); ?>
+
+<?php $__env->startSection('content'); ?>
+	<?php $__env->startComponent('components.breadcrumb'); ?>
+		<?php $__env->slot('breadcrumb_title'); ?>
 			<h3>Tambah Page</h3>
-		@endslot
+		<?php $__env->endSlot(); ?>
 		<li class="breadcrumb-item">Setting</li>
 		<li class="breadcrumb-item active">Tambah Page</li>
-	@endcomponent
+	<?php echo $__env->renderComponent(); ?>
 
     <div class="form-builder">
         <div class="container-fluid">
@@ -28,8 +29,8 @@
                       <div class="col-lg-6 col-xl-6">
                         <div class="tab-content" id="pills-tabContent">
                           <div class="tab-pane fade show active" id="pills-input" role="tabpanel" aria-labelledby="pills-input-tab">
-                            <form method="POST" action="{{ route('permission.store') }}"  class="theme-form">
-                              @csrf
+                            <form method="POST" action="<?php echo e(route('permission.store')); ?>"  class="theme-form">
+                              <?php echo csrf_field(); ?>
                               <div class="mb-3 draggable">
                                 <label for="input-text-1">TYPE</label>
                                 <input id="type" type="text" class="form-control" name="type" required autocomplete="type" autofocus>
@@ -55,10 +56,11 @@
         </div>
       </div>
 
-    @push('scripts') 
-    <script src="{{ asset('assets/js/jquery.ui.min.js') }}"></script>
-    <script src="{{ asset('assets/js/form-builder/form-builder-2/beautifyhtml.js') }}"></script>
-    <script src="{{ asset('assets/js/form-builder/form-builder-2/form-builder-2.js') }}"></script>
-	@endpush
+    <?php $__env->startPush('scripts'); ?> 
+    <script src="<?php echo e(asset('assets/js/jquery.ui.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/form-builder/form-builder-2/beautifyhtml.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/form-builder/form-builder-2/form-builder-2.js')); ?>"></script>
+	<?php $__env->stopPush(); ?>
 
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.admin.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\puskesmas\resources\views/admin/pages/create.blade.php ENDPATH**/ ?>

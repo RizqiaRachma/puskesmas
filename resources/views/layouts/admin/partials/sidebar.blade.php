@@ -36,16 +36,24 @@
                         </ul>
                     </li>
                     <li class="dropdown">
+                        <a class="nav-link menu-title {{ prefixActive('/setting') }}" href="javascript:void(0)"><i data-feather="airplay"></i><span>Setting</span></a>
+                        <ul class="nav-submenu menu-content"  style="display: {{ prefixBlock('/widgets') }};">
+                            <li><a href="{{ route('page.index') }}" class="{{routeActive('page.index')}}">Page</a></li>
+                            <li><a href="{{ route('chart-widget') }}" class="{{routeActive('chart-widget')}}">Menu</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li class="sidebar-main-title">
+                        <div>
+                            <h6>Components</h6>
+                        </div>
+                    </li>
+                    <li class="dropdown">
                         <a class="nav-link menu-title {{ prefixActive('/widgets') }}" href="javascript:void(0)"><i data-feather="airplay"></i><span>Widgets</span></a>
                         <ul class="nav-submenu menu-content"  style="display: {{ prefixBlock('/widgets') }};">
                             <li><a href="{{ route('general-widget') }}" class="{{routeActive('general-widget')}}">General</a></li>
                             <li><a href="{{ route('chart-widget') }}" class="{{routeActive('chart-widget')}}">Chart</a></li>
                         </ul>
-                    </li>
-                    <li class="sidebar-main-title">
-                        <div>
-                            <h6>Components</h6>
-                        </div>
                     </li>
                     <li class="dropdown">
                         <a class="nav-link menu-title {{ prefixActive('/ui-kits') }}" href="javascript:void(0)"><i data-feather="box"></i><span>Ui Kits</span></a>

@@ -36,16 +36,24 @@
                         </ul>
                     </li>
                     <li class="dropdown">
+                        <a class="nav-link menu-title <?php echo e(prefixActive('/setting')); ?>" href="javascript:void(0)"><i data-feather="airplay"></i><span>Setting</span></a>
+                        <ul class="nav-submenu menu-content"  style="display: <?php echo e(prefixBlock('/widgets')); ?>;">
+                            <li><a href="<?php echo e(route('page.index')); ?>" class="<?php echo e(routeActive('page.index')); ?>">Page</a></li>
+                            <li><a href="<?php echo e(route('chart-widget')); ?>" class="<?php echo e(routeActive('chart-widget')); ?>">Menu</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li class="sidebar-main-title">
+                        <div>
+                            <h6>Components</h6>
+                        </div>
+                    </li>
+                    <li class="dropdown">
                         <a class="nav-link menu-title <?php echo e(prefixActive('/widgets')); ?>" href="javascript:void(0)"><i data-feather="airplay"></i><span>Widgets</span></a>
                         <ul class="nav-submenu menu-content"  style="display: <?php echo e(prefixBlock('/widgets')); ?>;">
                             <li><a href="<?php echo e(route('general-widget')); ?>" class="<?php echo e(routeActive('general-widget')); ?>">General</a></li>
                             <li><a href="<?php echo e(route('chart-widget')); ?>" class="<?php echo e(routeActive('chart-widget')); ?>">Chart</a></li>
                         </ul>
-                    </li>
-                    <li class="sidebar-main-title">
-                        <div>
-                            <h6>Components</h6>
-                        </div>
                     </li>
                     <li class="dropdown">
                         <a class="nav-link menu-title <?php echo e(prefixActive('/ui-kits')); ?>" href="javascript:void(0)"><i data-feather="box"></i><span>Ui Kits</span></a>
