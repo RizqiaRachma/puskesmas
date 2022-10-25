@@ -1,6 +1,6 @@
 @extends('layouts.admin.master')
 
-@section('title') Page
+@section('title') Menu
  {{ $title }}
 @endsection
 
@@ -10,10 +10,10 @@
 @section('content')
 	@component('components.breadcrumb')
 		@slot('breadcrumb_title')
-			<h3>Tambah Page</h3>
+			<h3>Tambah Menu</h3>
 		@endslot
 		<li class="breadcrumb-item">Setting</li>
-		<li class="breadcrumb-item active">Tambah Page</li>
+		<li class="breadcrumb-item active">Tambah Menu</li>
 	@endcomponent
 
     <div class="form-builder">
@@ -22,18 +22,15 @@
             <div class="col-sm-12">
               <div class="card">
                 <div class="card-header">
-                  <h5>Tambah Page</h5>
+                  <h5>Tambah Menu</h5>
                 </div>
                 <div class="card-body form-builder">
                       <div class="col-lg-12 col-xl-12">
                         <div class="tab-content" id="pills-tabContent">
                           <div class="tab-pane fade show active" id="pills-input" role="tabpanel" aria-labelledby="pills-input-tab">
-                            <form method="POST" action="{{ route('page.store') }}"  class="theme-form">
+                            <form method="POST" action="{{ route('menu.store') }}"  class="theme-form">
                               @csrf
-                              <div class="mb-3 draggable">
-                                <label for="input-text-1">TYPE</label>
-                                <input id="type" type="text" class="form-control" name="type" required autocomplete="type" autofocus>
-                              </div>
+                              
                               <div class="mb-3 draggable">
                                 <label for="input-text-1">NAME</label>
                                 <input id="name" type="text" class="form-control" name="name" required autocomplete="name" autofocus>
@@ -42,20 +39,11 @@
                                 <label for="input-text-1">SLUG</label>
                                 <input id="name" type="text" class="form-control" name="name" required autocomplete="name" autofocus>
                               </div>
+                              <div class="mb-3 draggable">
+                                <label for="input-text-1">PARENT</label>
+                                <input id="type" type="text" class="form-control" name="parent" required autocomplete="type" autofocus>
+                              </div>
                               
-	                          
-                              <div class="row">
-                                <div class="col-sm-12">
-                                  <label for="input-text-1">BODY</label>
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <textarea id="editor1" name="body" cols="30" rows="10">
-                                   
-                                            </textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                             
         
                       

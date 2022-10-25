@@ -3,6 +3,7 @@
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RolesController;
+use App\Http\Controllers\MenuController;
 use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
 
@@ -39,6 +40,13 @@ Route::prefix('users')->group(function () {
 Route::prefix('page')->group(function () {
 	Route::get('/', [PageController::class, 'index'])->name('page.index');
 	Route::get('/create', [PageController::class, 'create'])->name('page.create');
+	Route::post('/store', [PageController::class, 'store'])->name('page.store');
+});
+
+Route::prefix('menu')->group(function () {
+	Route::get('/', [MenuController::class, 'index'])->name('menu.index');
+	Route::get('/create', [MenuController::class, 'create'])->name('menu.create');
+	Route::post('/store', [MenuController::class, 'store'])->name('menu.store');
 });
 
 

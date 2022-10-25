@@ -47,18 +47,18 @@ class UserController extends Controller
 
         if ($save) {
             $user = User::find($save->id);
-            dd($user);
+            // dd($user);
 
             $saveprofile = new Profile();
-            $saveprofile->name = $request->name;
-            $saveprofile->address = $request->address;
+            $saveprofile->name      = $request->name;
+            $saveprofile->address   = $request->address;
             $saveprofile->kelurahan = $request->kelurahan;
             $saveprofile->kecamatan = $request->kecamatan;
-            $saveprofile->kotakab = $request->kotakab;
-            $saveprofile->aboutme = $request->aboutme;
+            $saveprofile->kotakab   = $request->kotakab;
+            $saveprofile->aboutme   = $request->aboutme;
             $saveprofile->emergency = $request->emergency;
-            $saveprofile->place = $request->place;
-            $saveprofile->birthday = $request->birthday;
+            $saveprofile->place     = $request->place;
+            $saveprofile->birthday  = $request->birthday;
             $user->profile()->save($saveprofile);
 
             if ($request->hasFile('avatar') && $request->file('avatar')->isValid()) {

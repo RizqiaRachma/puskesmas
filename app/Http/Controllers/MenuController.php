@@ -10,42 +10,46 @@ use Illuminate\Support\Facades\Auth;
 
 class MenuController extends Controller
 {
-    public function index(){
-        $data = Menu::where('parent','0')->get();
-        
+    public function index()
+    {
+        $data = Menu::where('parent', '0')->get();
+
         return view('admin.menu.index', ['data' => $data]);
     }
 
-    public function create(){
+    public function create()
+    {
         $menus = Menu::All();
         $pages = Page::all();
 
         return view('admin.menu.create', ['menus' => $menus, 'pages' => $pages]);
     }
 
-    public function store(Request $request){
+    public function store(Request $request)
+    {
         $validated = $request->validate([
             'name' => 'required|unique:menus|max:50',
         ]);
 
         // dd($request);
 
-        if ($request->page == 0){
+        if ($request->page == 0) {
             $link = '#';
-        }else{
+        } else {
             $link = $request->page;
         }
-        $save = NEW Menu;
+        $save = new Menu;
         $save->name = $request->name;
         $save->link = $link;
-        $save->user_id = Auth::user()->id;
-        $save->parent = $request->parent;
+        $save->user_id  = Auth::user()->id;
+        $save->parent   = $request->parent;
         $save->save();
 
         return redirect()->route('menus.index')->with('success', 'Menu created successfully.');
     }
 
-    public function edit($id){
+    public function edit($id)
+    {
         $data = Menu::where('id', $id)->first();
         $menus = Menu::All();
         $pages = Page::all();
@@ -53,16 +57,17 @@ class MenuController extends Controller
         return view('admin.menu.edit', ['menus' => $menus, 'pages' => $pages, 'data' => $data]);
     }
 
-    public function update(Request $request, $id){
+    public function update(Request $request, $id)
+    {
         $validated = $request->validate([
             'name' => 'required|max:50',
         ]);
 
         $save = Menu::findOrFail($id);
 
-        if ($request->page == 0){
+        if ($request->page == 0) {
             $link = '#';
-        }else{
+        } else {
             $link = $request->page;
         }
 
@@ -76,7 +81,8 @@ class MenuController extends Controller
         return redirect()->route('menus.index')->with('success', 'Menu updated successfully.');
     }
 
-    public function destroy($id){
+    public function destroy($id)
+    {
         // dd($id);
         $data = Menu::findOrFail($id);
         $data->delete();
