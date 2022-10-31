@@ -26,6 +26,11 @@
 	                    <h5>PAGE</h5>
 						<a href="{{route('page.create')}}" class="btn btn-primary btn-sm"><i class="fa fa-plus-square"></i> Tambah</a>
 	                </div>
+					@if (session('success'))
+					<div class="alert alert-success" role="alert">
+						{{ session('success')}}
+					</div>
+					@endif
 	                <div class="card-body">
 	                    <div class="dt-ext table-responsive">
 	                        <table class="display" id="responsive">
@@ -33,7 +38,7 @@
 	                                <tr>
                                         <th>TYPE</th>
 	                                    <th>NAMA</th>
-										<th>SLAG</th>
+										<th>SLUG</th>
 										<th>BODY</th>
 										<th>AKSI</th>
 	                                </tr>
@@ -43,9 +48,9 @@
 	                                <tr>
 	                                    <td>{{ $u->type }}</td>
 	                                    <td>{{ $u->name }}</td>
-										<td>{{ $u->slag }}</td>
+										<td>{{ $u->slug }}</td>
 	                                    <td>{{ $u->body }}</td>
-	                                    <td><a href="{{url('users/edit')}}/{{$u->id}}" class="btn btn-warning" >Edit</a> | <a href="{{url('users/delete')}}/{{$u->id}}"  onclick="deleteContact()" class="btn btn-danger" >Delete</a></td>
+	                                    <td><a href="{{url('page/edit')}}/{{$u->id}}" class="btn btn-warning" >Edit</a> | <a href="{{url('page/destroy')}}/{{$u->id}}"  onclick="deleteContact()" class="btn btn-danger" >Delete</a></td>
 									</tr>
 									@endforeach
 									 

@@ -40,7 +40,7 @@ class MenuController extends Controller
         }
         $save = new Menu;
         $save->name = $request->name;
-        $save->link = $link;
+        $save->slug = $slug;
         $save->user_id  = Auth::user()->id;
         $save->parent   = $request->parent;
         $save->save();

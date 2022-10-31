@@ -15,7 +15,7 @@
 		<?php $__env->slot('breadcrumb_title'); ?>
 			<h3>MENU</h3>
 		<?php $__env->endSlot(); ?>
-		<li class="breadcrumb-item">Setting</li>
+		<li class="breadcrumb-item">Menu</li>
 		<li class="breadcrumb-item">Menu</li>
 	<?php echo $__env->renderComponent(); ?>
 	
@@ -24,16 +24,22 @@
 	        <div class="col-sm-12">
 	            <div class="card">
 	                <div class="card-header">
-	                    <h5>PAGE</h5>
-						<a href="<?php echo e(route('menu.create')); ?>" class="btn btn-primary btn-sm"><i class="fa fa-plus-square"></i>Tambah</a>
+	                    <h5>MENU</h5>
+						<a href="<?php echo e(route('menu.create')); ?>" class="btn btn-primary btn-sm"><i class="fa fa-plus-square"></i> Tambah</a>
 	                </div>
+					<?php if(session('success')): ?>
+					<div class="alert alert-success" role="alert">
+						<?php echo e(session('success')); ?>
+
+					</div>
+					<?php endif; ?>
 	                <div class="card-body">
 	                    <div class="dt-ext table-responsive">
 	                        <table class="display" id="responsive">
 	                            <thead>
 	                                <tr>
 	                                    <th>NAMA</th>
-										<th>SLAG</th>
+										<th>SLUG</th>
 										<th>PARENT</th>
 										<th>AKSI</th>
 	                                </tr>
@@ -42,9 +48,9 @@
                                    <?php $__currentLoopData = $data; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $u): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 	                                <tr>
 	                                    <td><?php echo e($u->name); ?></td>
-										<td><?php echo e($u->slag); ?></td>
+										<td><?php echo e($u->slug); ?></td>
 	                                    <td><?php echo e($u->parent); ?></td>
-	                                    <td><a href="<?php echo e(url('menu/edit')); ?>/<?php echo e($u->id); ?>" class="btn btn-warning" >Edit</a> | <a href="<?php echo e(url('menu/delete')); ?>/<?php echo e($u->id); ?>"  onclick="deleteContact()" class="btn btn-danger" >Delete</a></td>
+	                                    <td><a href="<?php echo e(url('menu/edit')); ?>/<?php echo e($u->id); ?>" class="btn btn-warning" >Edit</a> | <a href="<?php echo e(url('menu/destroy')); ?>/<?php echo e($u->id); ?>"  onclick="deleteContact()" class="btn btn-danger" >Delete</a></td>
 									</tr>
 									<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 									 

@@ -96,7 +96,7 @@
 							 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 						  </div>
 					<div class="form-group">
-							<label class="sr-only" for="f1-password">Avatar</label>
+							<label for="f1-password">Avatar</label>
 							<input class="f1-password form-control"  type="file" name="avatar" required="">
 						  </div>
 					<div class="form-group">

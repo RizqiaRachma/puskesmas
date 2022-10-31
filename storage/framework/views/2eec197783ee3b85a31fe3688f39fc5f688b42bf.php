@@ -27,6 +27,12 @@
 	                    <h5>PAGE</h5>
 						<a href="<?php echo e(route('page.create')); ?>" class="btn btn-primary btn-sm"><i class="fa fa-plus-square"></i> Tambah</a>
 	                </div>
+					<?php if(session('success')): ?>
+					<div class="alert alert-success" role="alert">
+						<?php echo e(session('success')); ?>
+
+					</div>
+					<?php endif; ?>
 	                <div class="card-body">
 	                    <div class="dt-ext table-responsive">
 	                        <table class="display" id="responsive">
@@ -34,7 +40,7 @@
 	                                <tr>
                                         <th>TYPE</th>
 	                                    <th>NAMA</th>
-										<th>SLAG</th>
+										<th>SLUG</th>
 										<th>BODY</th>
 										<th>AKSI</th>
 	                                </tr>
@@ -44,9 +50,9 @@
 	                                <tr>
 	                                    <td><?php echo e($u->type); ?></td>
 	                                    <td><?php echo e($u->name); ?></td>
-										<td><?php echo e($u->slag); ?></td>
+										<td><?php echo e($u->slug); ?></td>
 	                                    <td><?php echo e($u->body); ?></td>
-	                                    <td><a href="<?php echo e(url('users/edit')); ?>/<?php echo e($u->id); ?>" class="btn btn-warning" >Edit</a> | <a href="<?php echo e(url('users/delete')); ?>/<?php echo e($u->id); ?>"  onclick="deleteContact()" class="btn btn-danger" >Delete</a></td>
+	                                    <td><a href="<?php echo e(url('page/edit')); ?>/<?php echo e($u->id); ?>" class="btn btn-warning" >Edit</a> | <a href="<?php echo e(url('page/destroy')); ?>/<?php echo e($u->id); ?>"  onclick="deleteContact()" class="btn btn-danger" >Delete</a></td>
 									</tr>
 									<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 									 

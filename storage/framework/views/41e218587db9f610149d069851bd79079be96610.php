@@ -121,7 +121,7 @@
           </ul>
         </li>
         <li class="onhover-dropdown p-0">
-          <a href="/logout"><button class="btn btn-primary-light" type="button"><i data-feather="log-out"></i>Log out</button></a>
+          <a href="<?php echo e(url('/logout')); ?>"><button class="btn btn-primary-light" type="button"><i data-feather="log-out"></i>Log out</button></a>
         </li> 
       </ul>
     </div>

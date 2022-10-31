@@ -11,10 +11,11 @@
 <?php $__env->startSection('content'); ?>
 	<?php $__env->startComponent('components.breadcrumb'); ?>
 		<?php $__env->slot('breadcrumb_title'); ?>
-			<h3>Tambah Page</h3>
+			<h3>Edit Page</h3>
 		<?php $__env->endSlot(); ?>
-		<li class="breadcrumb-item">Setting</li>
-		<li class="breadcrumb-item active">Tambah Page</li>
+		<li class="breadcrumb-item">Menu</li>
+        <li class="breadcrumb-item">Page</li>
+		<li class="breadcrumb-item active">Edit Page</li>
 	<?php echo $__env->renderComponent(); ?>
 
     <div class="form-builder">
@@ -30,36 +31,41 @@
                       <div class="col-lg-12 col-xl-12">
                         <div class="tab-content" id="pills-tabContent">
                           <div class="tab-pane fade show active" id="pills-input" role="tabpanel" aria-labelledby="pills-input-tab">
-                            <form method="POST" action="<?php echo e(route('page.store')); ?>"  class="theme-form">
+                            <form method="POST" action="<?php echo e(route('page.update', $data->id)); ?>"  class="theme-form">
                               <?php echo csrf_field(); ?>
+                              <?php echo method_field('PUT'); ?>
                               <div class="mb-3 draggable">
                                 <label for="input-text-1">TYPE</label>
                                 <select class="form-control form-control-primary btn-square" name="type">
-                                  <option value="Page">Page</option>
-                                  <option value="Berita">Berita</option>
-                                  <option value="Galeri">Galeri</option>
-                                  <option value="Unduhan">Unduhan</option>
+                                  <option value="Page" <?php if($data->type === 'Page'): ?>  selected <?php endif; ?>>Page</option>
+                                  <option value="Berita" <?php if($data->type === 'Berita'): ?> selected <?php endif; ?>>Berita</option>
+                                  <option value="Galeri" <?php if($data->type === 'Galeri'): ?> selected <?php endif; ?>>Galeri</option>
+                                  <option value="Unduhan" <?php if($data->type === 'Unduhan'): ?> selected <?php endif; ?>>Unduhan</option>
                               </select>
                               </div>
                               </div>
                               
                               <div class="mb-3 draggable">
                                 <label for="input-text-1">NAME</label>
-                                <input id="name" type="text" class="form-control" name="name" required autocomplete="name" autofocus>
+                                <input id="name" type="text" class="form-control" name="name" value="<?php echo e($data->name); ?>"  required autocomplete="name" autofocus>
                               </div>
                               <div class="mb-3 draggable">
                                 <label for="input-text-1">SLUG</label>
-                                <input id="name" type="text" class="form-control" name="slug" required autocomplete="name" autofocus>
+                                <input id="name" type="text" class="form-control" name="slug" value="<?php echo e($data->slug); ?>" required autocomplete="name" autofocus>
                               </div>
-                              
+                              <div class="mb-3 draggable">
+                                <label for="input-text-1">COUNT</label>
+                                <input id="name" type="text" class="form-control" name="count" value="<?php echo e($data->count); ?>" required autocomplete="name" autofocus>
+                              </div>
 	                          
                               <div class="row">
                                 <div class="col-sm-12">
                                   <label for="input-text-1">BODY</label>
                                     <div class="card">
                                         <div class="card-body">
-                                            <textarea id="editor1" name="body" cols="30" rows="10">
-                                   
+                                            <textarea id="editor1" name="body" value="<?php echo e($data->body); ?>" cols="30" rows="10">
+                                                <?php echo e($data->body); ?>
+
                                             </textarea>
                                         </div>
                                     </div>
@@ -99,4 +105,4 @@
 	<?php $__env->stopPush(); ?>
 
 <?php $__env->stopSection(); ?>
-<?php echo $__env->make('layouts.admin.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\puskesmas\resources\views/admin/pages/create.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.admin.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\puskesmas\resources\views/admin/pages/edit.blade.php ENDPATH**/ ?>

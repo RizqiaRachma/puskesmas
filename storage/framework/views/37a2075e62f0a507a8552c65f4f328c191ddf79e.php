@@ -36,7 +36,7 @@
                         </ul>
                     </li>
                     <li class="dropdown">
-                        <a class="nav-link menu-title <?php echo e(prefixActive('/setting')); ?>" href="javascript:void(0)"><i data-feather="airplay"></i><span>Setting</span></a>
+                        <a class="nav-link menu-title <?php echo e(prefixActive('/setting')); ?>" href="javascript:void(0)"><i data-feather="airplay"></i><span>Menu</span></a>
                         <ul class="nav-submenu menu-content"  style="display: <?php echo e(prefixBlock('/widgets')); ?>;">
                             <li><a href="<?php echo e(route('menu.index')); ?>" class="<?php echo e(routeActive('menu.index')); ?>">Menu</a></li>
                             <li><a href="<?php echo e(route('page.index')); ?>" class="<?php echo e(routeActive('page.index')); ?>">Page</a></li>

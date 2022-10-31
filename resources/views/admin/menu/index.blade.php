@@ -14,7 +14,7 @@
 		@slot('breadcrumb_title')
 			<h3>MENU</h3>
 		@endslot
-		<li class="breadcrumb-item">Setting</li>
+		<li class="breadcrumb-item">Menu</li>
 		<li class="breadcrumb-item">Menu</li>
 	@endcomponent
 	
@@ -23,16 +23,21 @@
 	        <div class="col-sm-12">
 	            <div class="card">
 	                <div class="card-header">
-	                    <h5>PAGE</h5>
-						<a href="{{route('menu.create')}}" class="btn btn-primary btn-sm"><i class="fa fa-plus-square"></i>Tambah</a>
+	                    <h5>MENU</h5>
+						<a href="{{route('menu.create')}}" class="btn btn-primary btn-sm"><i class="fa fa-plus-square"></i> Tambah</a>
 	                </div>
+					@if (session('success'))
+					<div class="alert alert-success" role="alert">
+						{{ session('success')}}
+					</div>
+					@endif
 	                <div class="card-body">
 	                    <div class="dt-ext table-responsive">
 	                        <table class="display" id="responsive">
 	                            <thead>
 	                                <tr>
 	                                    <th>NAMA</th>
-										<th>SLAG</th>
+										<th>SLUG</th>
 										<th>PARENT</th>
 										<th>AKSI</th>
 	                                </tr>
@@ -41,9 +46,9 @@
                                    @foreach ($data as $u)
 	                                <tr>
 	                                    <td>{{ $u->name }}</td>
-										<td>{{ $u->slag }}</td>
+										<td>{{ $u->slug }}</td>
 	                                    <td>{{ $u->parent }}</td>
-	                                    <td><a href="{{url('menu/edit')}}/{{$u->id}}" class="btn btn-warning" >Edit</a> | <a href="{{url('menu/delete')}}/{{$u->id}}"  onclick="deleteContact()" class="btn btn-danger" >Delete</a></td>
+	                                    <td><a href="{{url('menu/edit')}}/{{$u->id}}" class="btn btn-warning" >Edit</a> | <a href="{{url('menu/destroy')}}/{{$u->id}}"  onclick="deleteContact()" class="btn btn-danger" >Delete</a></td>
 									</tr>
 									@endforeach
 									 

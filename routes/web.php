@@ -23,14 +23,6 @@ Route::get('/sejarah', [PuskesmasController::class, 'sejarah']);
 Route::get('/kontak', [PuskesmasController::class, 'kontak']);
 Route::get('/galeri', [PuskesmasController::class, 'galeri']);
 
-Route::get('register', [UserController::class, 'register'])->name('register');
-Route::post('registeraction', [UserController::class, 'register_action']);
-Route::get('login', [UserController::class, 'login'])->name('login');
-Route::post('loginaction', [UserController::class, 'login_action']);
-Route::get('logout', [UserController::class, 'logout']);
-
-
-
 Route::view('sample-page', 'admin.pages.sample-page')->name('sample-page');
 
 
@@ -41,6 +33,5 @@ Route::view('modern-layout', 'multiple.modern-layout')->name('modern-layout');
 
 Auth::routes();
 
-Route::prefix('admin')->group(function () {
-    Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
-});
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
+Route::get('/logout', [App\Http\Controllers\UserController::class, 'logout'])->name('logout');

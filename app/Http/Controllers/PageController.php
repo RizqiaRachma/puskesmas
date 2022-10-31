@@ -9,23 +9,26 @@ use Illuminate\Support\Facades\Auth;
 
 class PageController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         $data = Page::all();
 
         return view('admin.pages.index', ['data' => $data]);
     }
 
-    public function create(){
+    public function create()
+    {
         return view('admin.pages.create');
     }
 
-    public function store(Request $request){
+    public function store(Request $request)
+    {
         $validated = $request->validate([
             'name' => 'required|max:50',
         ]);
 
         // dd($request);
-        $save = NEW Page;
+        $save = new Page;
         $save->type = $request->type;
         $save->name = $request->name;
         $save->slug = Str::slug($request->name, '-');
@@ -34,20 +37,22 @@ class PageController extends Controller
         $save->status = '1';
         $save->save();
 
-        if($request->hasFile('thumbnail') && $request->file('thumbnail')->isValid()){
+        if ($request->hasFile('thumbnail') && $request->file('thumbnail')->isValid()) {
             $save->addMediaFromRequest('thumbnail')->toMediaCollection('thumbnail');
         }
 
-        return redirect()->route('pages.index')->with('success', 'Pages created successfully.');
+        return redirect()->route('page.index')->with('success', 'Pages created successfully.');
     }
 
-    public function edit($id){
-        $data = Page::where('id',$id)->first();
+    public function edit($id)
+    {
+        $data = Page::where('id', $id)->first();
 
         return view('admin.pages.edit', ['data' => $data]);
     }
 
-    public function update(Request $request, $id){
+    public function update(Request $request, $id)
+    {
         $validated = $request->validate([
             'name' => 'required|max:50',
         ]);
@@ -62,20 +67,21 @@ class PageController extends Controller
             'user' => Auth::user()->id,
         ]);
 
-        if($request->hasfile('thumbnail')){
+        if ($request->hasfile('thumbnail')) {
             $save->clearMediaCollectionExcept('thumbnail', $save->getFirstMedia());
             $save->addMediaFromRequest('thumbnail')->toMediaCollection('thumbnail');
         }
 
-        return redirect()->route('pages.index')->with('success', 'Pages created successfully.');
+        return redirect()->route('page.index')->with('success', 'Pages created successfully.');
     }
 
-    public function destroy($id){
+    public function destroy($id)
+    {
         // dd($id);
         $data = Page::findOrFail($id);
         $data->delete();
         $data->clearMediaCollectionExcept('thumbnail', $data->getFirstMedia());
 
-        return redirect()->route('pages.index')->with('success', 'Page deleted successfully.');
+        return redirect()->route('page.index')->with('success', 'Page deleted successfully.');
     }
 }

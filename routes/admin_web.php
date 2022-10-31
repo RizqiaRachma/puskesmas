@@ -41,12 +41,18 @@ Route::prefix('page')->group(function () {
 	Route::get('/', [PageController::class, 'index'])->name('page.index');
 	Route::get('/create', [PageController::class, 'create'])->name('page.create');
 	Route::post('/store', [PageController::class, 'store'])->name('page.store');
+	Route::get('/edit/{id}', [PageController::class, 'edit'])->name('page.edit');
+	Route::put('/update/{id}', [PageController::class, 'update'])->name('page.update');
+	Route::get('/destroy/{id}', [PageController::class, 'destroy'])->name('page.destroy');
 });
 
 Route::prefix('menu')->group(function () {
 	Route::get('/', [MenuController::class, 'index'])->name('menu.index');
 	Route::get('/create', [MenuController::class, 'create'])->name('menu.create');
 	Route::post('/store', [MenuController::class, 'store'])->name('menu.store');
+	Route::get('/edit/{id}', [MenuController::class, 'edit'])->name('menu.edit');
+	Route::put('/update/{id}', [MenuController::class, 'update'])->name('menu.update');
+	Route::get('/destroy/{id}', [MenuController::class, 'destroy'])->name('menu.destroy');
 });
 
 

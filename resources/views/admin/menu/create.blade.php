@@ -37,18 +37,20 @@
                               </div>
                               <div class="mb-3 draggable">
                                 <label for="input-text-1">SLUG</label>
-                                <input id="name" type="text" class="form-control" name="name" required autocomplete="name" autofocus>
+                                <select class="form-control form-control-primary btn-square" name="slug">
+                                  @foreach ($pages as $u)
+                                     <option value="{{ $u->slug }}">{{ $u->slug }}</option>
+                                  @endforeach
+                               </select>
                               </div>
                               <div class="mb-3 draggable">
                                 <label for="input-text-1">PARENT</label>
-                                <input id="type" type="text" class="form-control" name="parent" required autocomplete="type" autofocus>
+                                <select class="form-control form-control-primary btn-square" name="parent">
+                                  @foreach ($menus as $u)
+                                     <option value="{{ $u->name }}">{{ $u->name }}</option>
+                                  @endforeach
+                               </select>
                               </div>
-                              
-                            
-        
-                      
-                      
-                             
                               <div class="form-group">
                                 <button class="btn btn-primary " type="submit" data-original-title="btn btn-dark active" title="">SAVE</button>
                               </div> 

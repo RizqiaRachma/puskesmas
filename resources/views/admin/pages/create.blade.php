@@ -18,6 +18,7 @@
 
     <div class="form-builder">
         <div class="container-fluid">
+          <div class="select2-drpdwn">
           <div class="row">
             <div class="col-sm-12">
               <div class="card">
@@ -32,17 +33,27 @@
                               @csrf
                               <div class="mb-3 draggable">
                                 <label for="input-text-1">TYPE</label>
-                                <input id="type" type="text" class="form-control" name="type" required autocomplete="type" autofocus>
+                                <select class="form-control form-control-primary btn-square" name="type">
+                                  <option value="Page">Page</option>
+                                  <option value="Berita">Berita</option>
+                                  <option value="Galeri">Galeri</option>
+                                  <option value="Unduhan">Unduhan</option>
+                              </select>
                               </div>
+                              </div>
+                              
                               <div class="mb-3 draggable">
                                 <label for="input-text-1">NAME</label>
                                 <input id="name" type="text" class="form-control" name="name" required autocomplete="name" autofocus>
                               </div>
                               <div class="mb-3 draggable">
                                 <label for="input-text-1">SLUG</label>
-                                <input id="name" type="text" class="form-control" name="name" required autocomplete="name" autofocus>
+                                <input id="name" type="text" class="form-control" name="slug" required autocomplete="name" autofocus>
                               </div>
-                              
+                              <div class="mb-3 draggable">
+                                <label for="input-text-1">COUNT</label>
+                                <input id="name" type="text" class="form-control" name="count" required autocomplete="name" autofocus>
+                              </div>
 	                          
                               <div class="row">
                                 <div class="col-sm-12">
@@ -84,6 +95,9 @@
     <script src="{{ asset('assets/js/jquery.ui.min.js') }}"></script>
     <script src="{{ asset('assets/js/form-builder/form-builder-2/beautifyhtml.js') }}"></script>
     <script src="{{ asset('assets/js/form-builder/form-builder-2/form-builder-2.js') }}"></script>
+    
+    <script src="{{ asset('assets/js/select2/select2.full.min.js') }}"></script>
+    <script src="{{ asset('assets/js/select2/select2-custom.js') }}"></script>
 	@endpush
 
 @endsection

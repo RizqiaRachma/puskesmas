@@ -36,7 +36,7 @@
                         </ul>
                     </li>
                     <li class="dropdown">
-                        <a class="nav-link menu-title {{ prefixActive('/setting') }}" href="javascript:void(0)"><i data-feather="airplay"></i><span>Setting</span></a>
+                        <a class="nav-link menu-title {{ prefixActive('/setting') }}" href="javascript:void(0)"><i data-feather="airplay"></i><span>Menu</span></a>
                         <ul class="nav-submenu menu-content"  style="display: {{ prefixBlock('/widgets') }};">
                             <li><a href="{{ route('menu.index') }}" class="{{routeActive('menu.index')}}">Menu</a></li>
                             <li><a href="{{ route('page.index') }}" class="{{routeActive('page.index')}}">Page</a></li>

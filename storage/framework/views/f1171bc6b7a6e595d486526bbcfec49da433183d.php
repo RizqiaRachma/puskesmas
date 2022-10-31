@@ -38,18 +38,20 @@
                               </div>
                               <div class="mb-3 draggable">
                                 <label for="input-text-1">SLUG</label>
-                                <input id="name" type="text" class="form-control" name="name" required autocomplete="name" autofocus>
+                                <select class="form-control form-control-primary btn-square" name="slug">
+                                  <?php $__currentLoopData = $pages; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $u): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                     <option value="<?php echo e($u->slug); ?>"><?php echo e($u->slug); ?></option>
+                                  <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                               </select>
                               </div>
                               <div class="mb-3 draggable">
                                 <label for="input-text-1">PARENT</label>
-                                <input id="type" type="text" class="form-control" name="parent" required autocomplete="type" autofocus>
+                                <select class="form-control form-control-primary btn-square" name="parent">
+                                  <?php $__currentLoopData = $menus; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $u): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                     <option value="<?php echo e($u->parent); ?>"><?php echo e($u->parent); ?></option>
+                                  <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                               </select>
                               </div>
-                              
-                            
-        
-                      
-                      
-                             
                               <div class="form-group">
                                 <button class="btn btn-primary " type="submit" data-original-title="btn btn-dark active" title="">SAVE</button>
                               </div> 
