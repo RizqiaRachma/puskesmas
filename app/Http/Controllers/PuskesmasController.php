@@ -30,4 +30,16 @@ class PuskesmasController extends Controller
     {
         return view('user.galeri');
     }
+    public function berita()
+    {
+        return view('user.berita');
+    }
+    public function berita_detail()
+    {
+        return view('user.detail_berita');
+    }
+    public function unduhan()
+    {
+        return view('user.unduhan');
+    }
 }

@@ -22,6 +22,9 @@ Route::get('/tentang_kami', [PuskesmasController::class, 'tentang_kami']);
 Route::get('/sejarah', [PuskesmasController::class, 'sejarah']);
 Route::get('/kontak', [PuskesmasController::class, 'kontak']);
 Route::get('/galeri', [PuskesmasController::class, 'galeri']);
+Route::get('/berita', [PuskesmasController::class, 'berita']);
+Route::get('/berita_detail', [PuskesmasController::class, 'berita_detail']);
+Route::get('/unduhan', [PuskesmasController::class, 'unduhan']);
 
 Route::view('sample-page', 'admin.pages.sample-page')->name('sample-page');
 

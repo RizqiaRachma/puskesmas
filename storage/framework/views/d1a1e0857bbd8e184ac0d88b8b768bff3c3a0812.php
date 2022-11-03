@@ -51,7 +51,10 @@
                                 <label for="input-text-1">SLUG</label>
                                 <input id="name" type="text" class="form-control" name="slug" required autocomplete="name" autofocus>
                               </div>
-                              
+                              <div class="mb-3 draggable">
+                                <label for="input-text-1">COUNT</label>
+                                <input id="name" type="text" class="form-control" name="count" required autocomplete="name" autofocus>
+                              </div>
 	                          
                               <div class="row">
                                 <div class="col-sm-12">

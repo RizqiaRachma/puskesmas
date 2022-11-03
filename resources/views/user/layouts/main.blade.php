@@ -18,6 +18,9 @@
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://code.jquery.com/jquery-3.5.1.js" rel="stylesheet">
+    <link href="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js" rel="stylesheet">
+    <link href="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
     <link href="assets/user/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
@@ -102,9 +105,9 @@
                         <a href="appointment.html" class="dropdown-item">Appointment</a>
                     </div>
                 </div>
-                <a href="about.html" class="nav-item nav-link">Berita</a>
+                <a href="/berita" class="nav-item nav-link">Berita</a>
                 <a href="/galeri" class="nav-item nav-link">Galery</a>
-
+                <a href="/unduhan" class="nav-item nav-link">Unduhan</a>
                 <a href="/kontak" class="nav-item nav-link">Kontak</a>
             </div>
 
